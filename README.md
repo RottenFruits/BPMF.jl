@@ -3,16 +3,103 @@
 A Julia package for bayesian probabilistic matrix factorization (BPMF).
 
 ---
+## How to install
 
-# Overview
+You can install BPMF.jl running the following command.
 
-test
+```
+(v1.0) pkg> add https://github.com/RottenFruits/BPMF.jl
+```
 
-# Example
 
-test
+## Overview
 
-# References
+under construction.
+
+## Example
+
+Here are examples.
+
+At first read package and generate data.
+
+```
+using BPMF
+
+#data
+R = [
+    0 0 7;
+    0 1 6;
+    0 2 7;
+    0 3 4;
+    0 4 5;
+    0 5 4;
+    1 0 6;
+    1 1 7;
+    1 3 4;
+    1 4 3;
+    1 5 4;
+    2 1 3;
+    2 2 3;
+    2 3 1;
+    2 4 1;
+    3 0 1;
+    3 1 2;
+    3 2 2;
+    3 3 3;
+    3 4 3;
+    3 5 4;
+    4 0 1;
+    4 2 1;
+    4 3 2;
+    4 4 3;
+    4 5 3;
+]
+```
+
+### Using Gibbs Sampling Algorithm
+
+Following example is gibbs sampling algorithm.
+
+```
+β₀ = 2
+μ₀ = 0
+D = 3
+ν₀ = D
+W₀ = one(zeros(D, D))
+α = 2
+T = 100
+N = length(unique(R[:, 1]))
+M = length(unique(R[:, 2]))
+
+#learning
+gibbs_model = BPMF.GBPMFModel(D, α, β₀, μ₀, ν₀, W₀, N, M, T, R, [], [])
+BPMF.fit(gibbs_model)
+
+#predict new data
+BPMF.predict(gibbs_model, R, 10)
+```
+
+### Using Variational Inference Algorithm
+
+Following example is variational inference algorithm.
+
+```
+N = length(unique(R[:, 1]))
+M = length(unique(R[:, 2]))
+D = 3
+τ² = 1
+L = 10
+
+#learning
+variational_model = BPMF.VBPMFModel(R, N, M, D, [], [], τ², [], [], L)
+BPMF.fit(variational_model)
+
+#predict new data
+BPMF.predict(variational_model, R)
+```
+
+
+## References
 
 
 - Salakhutdinov, Ruslan, and Andriy Mnih. "Bayesian probabilistic matrix factorization using Markov chain Monte Carlo." Proceedings of the 25th international conference on Machine learning. ACM, 2008.
