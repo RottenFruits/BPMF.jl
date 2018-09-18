@@ -67,5 +67,6 @@ L = 10
 #learning
 model = BPMF.VBPMFModel(R, N, M, D, [], [], τ², [], [], L)
 BPMF.fit(model)
+BPMF.predict(model, R)
 
 println(sqrt(mean((R[:, 3] - BPMF.predict(model, R)) .^ 2)))
