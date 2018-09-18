@@ -7,7 +7,7 @@ A Julia package for bayesian probabilistic matrix factorization (BPMF).
 
 You can install BPMF.jl running the following command.
 
-```
+```julia
 (v1.0) pkg> add https://github.com/RottenFruits/BPMF.jl
 ```
 
@@ -22,7 +22,7 @@ Here are examples.
 
 At first read package and generate data.
 
-```
+```julia
 using BPMF
 
 #data
@@ -60,7 +60,7 @@ R = [
 
 Following example is gibbs sampling algorithm.
 
-```
+```julia
 β₀ = 2
 μ₀ = 0
 D = 3
@@ -83,7 +83,7 @@ BPMF.predict(gibbs_model, R, 10)
 
 Following example is variational inference algorithm.
 
-```
+```julia
 N = length(unique(R[:, 1]))
 M = length(unique(R[:, 2]))
 D = 3
