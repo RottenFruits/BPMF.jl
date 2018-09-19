@@ -67,7 +67,7 @@ D = 3
 ν₀ = D
 W₀ = one(zeros(D, D))
 α = 2
-T = 100
+T = 100 #sample count
 N = length(unique(R[:, 1]))
 M = length(unique(R[:, 2]))
 
@@ -88,7 +88,7 @@ N = length(unique(R[:, 1]))
 M = length(unique(R[:, 2]))
 D = 3
 τ² = 1
-L = 10
+L = 10 #number of iterations
 
 #learning
 variational_model = BPMF.VBPMFModel(R, N, M, D, [], [], τ², [], [], L)
