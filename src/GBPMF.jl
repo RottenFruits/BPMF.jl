@@ -6,18 +6,18 @@
 #   Proceedings of the 25th international conference on Machine learning. ACM, 2008.
 #
 mutable struct GBPMFModel
+    R::Array
+    N::Int64
+    M::Int64
     D::Int64
+    T::Int64
+    U::Array
+    V::Array
     α::Float64
     β₀::Float64
     μ₀::Float64
     ν₀::Float64
     W₀::Array
-    N::Int64
-    M::Int64
-    T::Int64
-    R::Array
-    U::Array
-    V::Array
 end
 
 function fit(model::GBPMFModel)

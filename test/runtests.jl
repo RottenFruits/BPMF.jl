@@ -47,12 +47,12 @@ N = length(unique(R[:, 1]))
 M = length(unique(R[:, 2]))
 
 #learning
-model = BPMF.GBPMFModel(D, α, β₀, μ₀, ν₀, W₀, N, M, T, R, [], [])
-BPMF.fit(model)
-BPMF.predict_all(model, 10)
-BPMF.predict(model, R, 10)
+gibbs_model = BPMF.GBPMFModel(R, N, M, D, T, [], [], α, β₀, μ₀, ν₀, W₀)
+BPMF.fit(gibbs_model)
+BPMF.predict_all(gibbs_model, 10)
+BPMF.predict(gibbs_model, R, 10)
 
-println(sqrt(mean((R[:, 3] - BPMF.predict(model, R, 10)) .^ 2)))
+println(sqrt(mean((R[:, 3] - BPMF.predict(gibbs_model, R, 10)) .^ 2)))
 
 #################################################################
 #       VBPMF
@@ -65,8 +65,8 @@ D = 3
 L = 10
 
 #learning
-model = BPMF.VBPMFModel(R, N, M, D, [], [], τ², [], [], L)
-BPMF.fit(model)
-BPMF.predict(model, R)
+variational_model = BPMF.VBPMFModel(R, N, M, D, L, [], [], τ², [], [])
+BPMF.fit(variational_model)
+BPMF.predict(variational_model, R)
 
-println(sqrt(mean((R[:, 3] - BPMF.predict(model, R)) .^ 2)))
+println(sqrt(mean((R[:, 3] - BPMF.predict(variational_model, R)) .^ 2)))

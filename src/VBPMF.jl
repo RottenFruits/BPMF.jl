@@ -10,12 +10,12 @@ mutable struct VBPMFModel
     I::Int64
     J::Int64
     n::Int64
+    L::Int64
     U::Array
     V::Array
     τ²::Float64
     σ²::Array
     ρ²::Array
-    L::Int64
 end
 
 function fit(model::VBPMFModel)
