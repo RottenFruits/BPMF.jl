@@ -80,7 +80,7 @@ D = 3
 ν₀ = D
 W₀ = one(zeros(D, D))
 α = 2
-T = 100 #sample count
+T = 100 #number of iterations
 N = length(unique(R[:, 1]))
 M = length(unique(R[:, 2]))
 
