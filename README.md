@@ -5,7 +5,15 @@ A Julia package for bayesian probabilistic matrix factorization (BPMF).
 ---
 ## How to install
 
-You can install BPMF.jl running the following command.
+You can install BPMF.jl running the following commands.
+
+1. Into The Pkg REPL-mode
+
+  - Enter the key`]` on the Julia REPL.
+
+2. Install the package
+
+  - Enter the following commond.
 
 ```julia
 (v1.0) pkg> add https://github.com/RottenFruits/BPMF.jl
@@ -14,7 +22,12 @@ You can install BPMF.jl running the following command.
 
 ## Overview
 
-under construction.
+This package is implementation bayesian probabilistic matrix factorization (BPMF).
+
+Supported features:
+
+- Gibbs sampling algorithm
+- Variational Inference Algorithm
 
 ## Example
 
