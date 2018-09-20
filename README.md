@@ -81,11 +81,13 @@ D = 3
 W₀ = one(zeros(D, D))
 α = 2
 T = 100 #number of iterations
+U = []
+V = []
 N = length(unique(R[:, 1]))
 M = length(unique(R[:, 2]))
 
 #learning
-gibbs_model = BPMF.GBPMFModel(R, N, M, D, T, [], [], α, β₀, μ₀, ν₀, W₀)
+gibbs_model = BPMF.GBPMFModel(R, N, M, D, T, U, V, α, β₀, μ₀, ν₀, W₀)
 BPMF.fit(gibbs_model)
 
 #predict new data
@@ -102,9 +104,13 @@ M = length(unique(R[:, 2]))
 D = 3
 τ² = 1
 L = 10 #number of iterations
+U = []
+V = []
+σ² = []
+ρ² = []
 
 #learning
-variational_model = BPMF.VBPMFModel(R, N, M, D, L, [], [], τ², [], [])
+variational_model = BPMF.VBPMFModel(R, N, M, D, L, U, V, τ², σ², ρ²)
 BPMF.fit(variational_model)
 
 #predict new data
