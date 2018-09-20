@@ -45,9 +45,11 @@ W₀ = one(zeros(D, D))
 T = 100
 N = length(unique(R[:, 1]))
 M = length(unique(R[:, 2]))
+U = []
+V = []
 
 #learning
-gibbs_model = BPMF.GBPMFModel(R, N, M, D, T, [], [], α, β₀, μ₀, ν₀, W₀)
+gibbs_model = BPMF.GBPMFModel(R, N, M, D, T, U, V, α, β₀, μ₀, ν₀, W₀)
 BPMF.fit(gibbs_model)
 BPMF.predict_all(gibbs_model, 10)
 BPMF.predict(gibbs_model, R, 10)
@@ -63,9 +65,13 @@ M = length(unique(R[:, 2]))
 D = 3
 τ² = 1
 L = 10
+U = []
+V = []
+σ² = []
+ρ² = []
 
 #learning
-variational_model = BPMF.VBPMFModel(R, N, M, D, L, [], [], τ², [], [])
+variational_model = BPMF.VBPMFModel(R, N, M, D, L, U, V, τ², σ², ρ²)
 BPMF.fit(variational_model)
 BPMF.predict(variational_model, R)
 
