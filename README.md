@@ -100,8 +100,8 @@ BPMF.predict(gibbs_model, R, bi)
 Following example is variational inference algorithm.
 
 ```julia
-N = length(unique(R[:, 1]))
-M = length(unique(R[:, 2]))
+N = length(unique(R[:, 1])) #number of unique users
+M = length(unique(R[:, 2])) #number of unique items
 D = 3 #number of latent dimensions
 τ² = 1 #hyper parameter
 L = 10 #number of iterations
