@@ -74,24 +74,24 @@ R = [
 Following example is gibbs sampling algorithm.
 
 ```julia
-β₀ = 2 #hyper parameter
-μ₀ = 0 #hyper parameter
+N = length(unique(R[:, 1])) #number of unique users
+M = length(unique(R[:, 2])) #number of unique items
 D = 3 #number of latent dimensions
-ν₀ = D #hyper parameter
-W₀ = one(zeros(D, D))
-α = 2 #hyper parameter
 T = 100 #number of iterations
 U = [] #user's latent factor
 V = [] #item's latent factor
-N = length(unique(R[:, 1])) #number of unique users
-M = length(unique(R[:, 2])) #number of unique items
-bi = 10 #burn-in
+α = 2 #hyper parameter
+β₀ = 2 #hyper parameter
+μ₀ = 0 #hyper parameter
+ν₀ = D #hyper parameter
+W₀ = one(zeros(D, D)) #hyper parameter
 
 #learning
 gibbs_model = BPMF.GBPMFModel(R, N, M, D, T, U, V, α, β₀, μ₀, ν₀, W₀)
 BPMF.fit(gibbs_model)
 
 #predict new data
+bi = 10 #burn-in
 BPMF.predict(gibbs_model, R, bi)
 ```
 
@@ -103,10 +103,10 @@ Following example is variational inference algorithm.
 N = length(unique(R[:, 1])) #number of unique users
 M = length(unique(R[:, 2])) #number of unique items
 D = 3 #number of latent dimensions
-τ² = 1 #hyper parameter
 L = 10 #number of iterations
 U = [] #user's latent factor
 V = [] #item's latent factor
+τ² = 1 #hyper parameter
 σ² = [] #hyper parameter
 ρ² = [] #hyper parameter
 
