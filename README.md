@@ -74,24 +74,25 @@ R = [
 Following example is gibbs sampling algorithm.
 
 ```julia
-β₀ = 2
-μ₀ = 0
-D = 3
-ν₀ = D
+β₀ = 2 #hyper parameter
+μ₀ = 0 #hyper parameter
+D = 3 #number of latent dimensions
+ν₀ = D #hyper parameter
 W₀ = one(zeros(D, D))
-α = 2
+α = 2 #hyper parameter
 T = 100 #number of iterations
-U = []
-V = []
-N = length(unique(R[:, 1]))
-M = length(unique(R[:, 2]))
+U = [] #user's latent factor
+V = [] #item's latent factor
+N = length(unique(R[:, 1])) #number of unique users
+M = length(unique(R[:, 2])) #number of unique items
+bi = 10 #burn-in
 
 #learning
 gibbs_model = BPMF.GBPMFModel(R, N, M, D, T, U, V, α, β₀, μ₀, ν₀, W₀)
 BPMF.fit(gibbs_model)
 
 #predict new data
-BPMF.predict(gibbs_model, R, 10)
+BPMF.predict(gibbs_model, R, bi)
 ```
 
 ### Using Variational Inference Algorithm
@@ -101,13 +102,13 @@ Following example is variational inference algorithm.
 ```julia
 N = length(unique(R[:, 1]))
 M = length(unique(R[:, 2]))
-D = 3
-τ² = 1
+D = 3 #number of latent dimensions
+τ² = 1 #hyper parameter
 L = 10 #number of iterations
-U = []
-V = []
-σ² = []
-ρ² = []
+U = [] #user's latent factor
+V = [] #item's latent factor
+σ² = [] #hyper parameter
+ρ² = [] #hyper parameter
 
 #learning
 variational_model = BPMF.VBPMFModel(R, N, M, D, L, U, V, τ², σ², ρ²)
