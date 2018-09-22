@@ -1,6 +1,6 @@
 name = "BPMF"
 uuid = "8161ba48-bb35-11e8-2adc-d5d1018fef83"
-authors = ["RF"]
+authors = ["RottenFruits"]
 version = "0.1.0"
 
 [deps]
