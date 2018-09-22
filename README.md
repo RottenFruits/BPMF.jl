@@ -1,6 +1,6 @@
 # BPMF.jl
 
-A Julia package for bayesian probabilistic matrix factorization (BPMF).
+A Julia package for Bayesian Probabilistic Matrix Factorization (BPMF).
 
 ---
 ## How to install
