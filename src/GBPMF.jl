@@ -60,8 +60,8 @@ function hyper_prameter_posterior(model::GBPMFModel, latent_matrix)
     ν₀ = model.ν₀
     W₀ = model.W₀
 
-    latent_matrix_bar = (1 / N) * sum(latent_matrix[:, :], dims =1)
-    S̄  =  (1 / N) .*  sum([latent_matrix[i, :]' .*  latent_matrix[i, :] for i = 1:N], dims = 1)[1]
+    latent_matrix_bar = (1 / N) * sum(latent_matrix[:, :], dims = 1)
+    S̄ = (1 / N) .* sum([latent_matrix[i, :]' .* latent_matrix[i, :] for i = 1:N], dims = 1)[1]
 
     μ₀_asterisk = ((β₀ * μ₀ .+ N * latent_matrix_bar) / (β₀ + N))[1, :]
     β₀_asterisk = β₀ + N
