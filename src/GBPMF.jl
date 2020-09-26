@@ -54,7 +54,7 @@ function fit(model::GBPMFModel)
 end
 
 function hyper_prameter_posterior(model::GBPMFModel, latent_matrix)
-    N = model.N
+    N = size(latent_matrix)[2]
     β₀ = model.β₀
     μ₀ = model.μ₀
     ν₀ = model.ν₀
