@@ -125,3 +125,5 @@ BPMF.predict(variational_model, R)
 - Salakhutdinov, Ruslan, and Andriy Mnih. "Bayesian probabilistic matrix factorization using Markov chain Monte Carlo." Proceedings of the 25th international conference on Machine learning. ACM, 2008.
 
 - Lim, Yew Jin, and Yee Whye Teh. "Variational Bayesian approach to movie rating prediction." Proceedings of KDD cup and workshop. Vol. 7. 2007.
+
+- LIVESENSE Data Analytics Blog, BPMF(Bayesian Probabilistic Matrix Factorization)によるレコメンド, https://analytics.livesense.co.jp/entry/2017/12/05/105618
